@@ -767,6 +767,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: comboTimeout
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: keyCombination
+      value: az
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401389103638288770, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401389103638288770, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1287,6 +1307,7 @@ MonoBehaviour:
     type: 3}
   velocityOfSpawnedObject: {x: 0, y: 10, z: 0}
   pointsToAdd: 1
+  comboTimeout: 2
 --- !u!114 &1363711266115913
 MonoBehaviour:
   m_ObjectHideFlags: 0
