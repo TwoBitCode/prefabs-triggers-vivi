@@ -11,7 +11,7 @@ public class LaserShooter : ClickSpawner
 
     [Header("Key Combination Settings")]
     [SerializeField] private float comboTimeout = 2f; // Timeout for key combination
-    private string currentInput = ""; // Stores the current key sequence
+    private string currentInput = ""; // stores the current key sequence
     private float comboTimer;
 
     // State tracking for temporary effects
