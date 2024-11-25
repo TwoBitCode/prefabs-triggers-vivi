@@ -8,7 +8,31 @@ public class ClickSpawner : MonoBehaviour
 {
     [SerializeField] protected InputAction spawnAction = new InputAction(type: InputActionType.Button);
     [SerializeField] protected GameObject prefabToSpawn;
-    [SerializeField] protected Vector3 velocityOfSpawnedObject;
+    [SerializeField] protected Vector3 normalVelocityOfSpawnedObject;
+    [SerializeField] protected Vector3 aggressiveVelocityOfSpawnedObject;
+
+    protected Vector3 currentVelocity;
+
+    private void Start()
+    {
+        // Initialize with normal velocity
+        currentVelocity = normalVelocityOfSpawnedObject;
+
+        // Subscribe to aggression mode changes
+        AggressionTracker.OnAggressionModeChanged += HandleAggressionMode;
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to prevent memory leaks
+        AggressionTracker.OnAggressionModeChanged -= HandleAggressionMode;
+    }
+
+    private void HandleAggressionMode(bool isAggressive)
+    {
+        // Adjust velocity based on aggression mode
+        currentVelocity = isAggressive ? aggressiveVelocityOfSpawnedObject : normalVelocityOfSpawnedObject;
+    }
 
     void OnEnable()
     {
@@ -31,7 +55,7 @@ public class ClickSpawner : MonoBehaviour
         Mover newObjectMover = newObject.GetComponent<Mover>();
         if (newObjectMover)
         {
-            newObjectMover.SetVelocity(velocityOfSpawnedObject);
+            newObjectMover.SetVelocity(currentVelocity);
         }
 
         return newObject;

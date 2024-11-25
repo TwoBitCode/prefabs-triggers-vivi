@@ -446,6 +446,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &687547820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2028650985723803405, guid: 41e5c0266515f1c49aec825f2068a297,
+    type: 3}
+  m_PrefabInstance: {fileID: 1604446121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523b3d4932836264caa53ada165578a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &750246238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8392271928695271261, guid: 76dd5d4eb2061104b9a72b003c24ce25,
@@ -769,13 +781,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
+      propertyPath: scoreField
+      value: 
+      objectReference: {fileID: 687547820}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
       propertyPath: comboTimeout
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
+      propertyPath: shotInterval
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: firingCooldown
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
       propertyPath: keyCombination
       value: az
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: maxShotsPerSecond
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: maxShotsPerInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: normalVelocityOfSpawnedObject.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: normalVelocityOfSpawnedObject.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: normalVelocityOfSpawnedObject.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: aggressiveVelocityOfSpawnedObject.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: aggressiveVelocityOfSpawnedObject.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: aggressiveVelocityOfSpawnedObject.z
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5401389103638288770, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
@@ -807,6 +874,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1604446135}
+    - targetCorrespondingSourceObject: {fileID: 3896440064613542801, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1604446136}
     - targetCorrespondingSourceObject: {fileID: 880349689355459643, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
       insertIndex: -1
@@ -870,6 +941,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3460ad62ce8a39e47a75c13b362f00d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1604446136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604446122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a3f63f1fede4048a32022838eb94e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotsThreshold: 3
+  scoreThreshold: 8
+  aggressionDuration: 5
 --- !u!1 &1811610584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,9 +1391,12 @@ MonoBehaviour:
     m_Flags: 0
   prefabToSpawn: {fileID: 206225842732292031, guid: 1064f1e6fd4430a48ae8a63513c527b4,
     type: 3}
-  velocityOfSpawnedObject: {x: 0, y: 10, z: 0}
+  normalVelocityOfSpawnedObject: {x: 0, y: 0, z: 0}
+  aggressiveVelocityOfSpawnedObject: {x: 0, y: 0, z: 0}
   pointsToAdd: 1
   comboTimeout: 2
+  maxShotsPerSecond: 3
+  velocityOfSpawnedObject: {x: 0, y: 0, z: 0}
 --- !u!114 &1363711266115913
 MonoBehaviour:
   m_ObjectHideFlags: 0

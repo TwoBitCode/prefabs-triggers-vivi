@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8392271928695271262}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.25, y: 6.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8392271928695271266
 MonoBehaviour:
@@ -45,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 7837289214103786378, guid: aea6176f031eaef4a8a2c395ae5f001e,
     type: 3}
-  velocityOfSpawnedObject: {x: 0, y: -2, z: 0}
+  normalVelocityOfSpawnedObject: {x: 0, y: -2, z: 0}
+  aggressiveVelocityOfSpawnedObject: {x: 0, y: -5, z: 0}
   minTimeBetweenSpawns: 1
   maxTimeBetweenSpawns: 3
   maxXDistance: 0.5
+  parentOfAllInstances: {fileID: 0}
