@@ -196,10 +196,10 @@ public class LaserShooter : ClickSpawner
                 Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
             }
         }
-        else
-        {
-            Debug.LogWarning("No TimedSpawnerRandom found in the scene. Aggression mode changes will not take effect.");
-        }
+        //else
+        //{
+        //    Debug.LogWarning("No TimedSpawnerRandom found in the scene. Aggression mode changes will not take effect.");
+        //}
     }
 
     protected override GameObject spawnObject()
