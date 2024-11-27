@@ -12,7 +12,7 @@ public class LaserShooter : ClickSpawner
 
     [Header("Key Combination Settings")]
     [SerializeField] private float comboTimeout = 2f; // Timeout for key combination
-    private string currentInput = ""; // Stores the current key sequence
+    private string currentInput = ""; // Tracks current key sequence
     private float comboTimer;
 
     // State tracking for temporary effects
@@ -53,38 +53,61 @@ public class LaserShooter : ClickSpawner
 
     protected override void Update()
     {
-        base.Update();
-
-        // Update cooldown timer for shot limit
+        // Update cooldown timer for spacebar rate limiting
         if (shotCooldownTimer > 0)
         {
             shotCooldownTimer -= Time.deltaTime;
-            if (shotCooldownTimer <= 0)
-            {
-                shotsFired = 0; // Reset shot counter after cooldown
-            }
         }
 
-        // Check for space key press for shooting
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && shotsFired < maxShotsPerSecond)
+        // Check for spacebar input
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            FireLaser();
-            shotsFired++;
-            if (shotsFired == maxShotsPerSecond)
+            if (shotsFired < maxShotsPerSecond && shotCooldownTimer <= 0)
             {
-                shotCooldownTimer = 1f; // Set cooldown timer (1 second)
-                Debug.Log("Shot limit reached. Cooldown started.");
+                FireLaser(); // Fire laser
+                shotsFired++;
+
+                if (shotsFired >= maxShotsPerSecond)
+                {
+                    shotCooldownTimer = 1f; // Disable spacebar for 1 second
+                    Debug.Log("Spacebar firing disabled: Cooldown started.");
+                }
+            }
+            else
+            {
+                Debug.Log("Spacebar firing blocked: On cooldown.");
             }
         }
 
-        // Capture key inputs for combos
+        // Reset shotsFired after cooldown
+        if (shotCooldownTimer <= 0 && shotsFired > 0)
+        {
+            shotsFired = 0; // Reset shot counter
+        }
+
+        // Handle keyword combinations
         foreach (char key in Input.inputString)
         {
             currentInput += key;
             comboTimer = comboTimeout;
 
             Debug.Log($"Combo input detected: {currentInput}");
-            ActivateWeapon();
+
+            if (currentInput.EndsWith("qwer"))
+            {
+                ActivateWeapon("qwer");
+                currentInput = ""; // Reset combo
+            }
+            else if (currentInput.EndsWith("ty"))
+            {
+                ActivateWeapon("ty");
+                currentInput = ""; // Reset combo
+            }
+            else if (currentInput.EndsWith("az"))
+            {
+                ActivateWeapon("az");
+                currentInput = ""; // Reset combo
+            }
         }
 
         // Reset combo input if timer expires
@@ -98,6 +121,8 @@ public class LaserShooter : ClickSpawner
             }
         }
     }
+
+
 
     private void FireLaser()
     {
@@ -113,41 +138,33 @@ public class LaserShooter : ClickSpawner
         Debug.Log("Laser fired.");
     }
 
-    private void ActivateWeapon()
+    private void ActivateWeapon(string combination)
     {
         if (isEffectActive) return;
 
-        if (currentInput == "123")
+        if (combination == "qwer")
         {
-            StartCoroutine(ApplyOneTimeEffect(() =>
-            {
-                Debug.Log("Triple shot activated for '123'!");
-                StartCoroutine(FireTripleShot());
-            }));
-            currentInput = ""; // Reset combo
+            Debug.Log("Triple shot activated for 'qwer'");
+            StartCoroutine(FireTripleShot());
         }
-        else if (currentInput == "xy")
+        else if (combination == "ty") 
         {
+            Debug.Log("Laser speed increased for 'ty!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
-                Debug.Log("Laser speed increased for 'xy'!");
                 velocityOfSpawnedObject = new Vector3(0, 20f, 0);
             }));
-            currentInput = ""; // Reset combo
         }
-        else if (currentInput == "az")
+        else if (combination == "az")
         {
+            Debug.Log("Laser size significantly increased for 'az'!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
-                Debug.Log("Laser size significantly increased for 'az'!");
                 prefabToSpawn.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }));
-            currentInput = ""; // Reset combo
         }
-        else if (currentInput.Length > 1)
-        {
-            Debug.Log($"Unrecognized key combination: {currentInput}");
-        }
+
+        FireLaser(); // Fire laser immediately after effect
     }
 
     private IEnumerator ApplyOneTimeEffect(System.Action effectAction)
@@ -196,10 +213,6 @@ public class LaserShooter : ClickSpawner
                 Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
             }
         }
-        //else
-        //{
-        //    Debug.LogWarning("No TimedSpawnerRandom found in the scene. Aggression mode changes will not take effect.");
-        //}
     }
 
     protected override GameObject spawnObject()
