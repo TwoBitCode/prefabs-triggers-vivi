@@ -43,14 +43,14 @@ public class TimedSpawnerRandom : MonoBehaviour
     {
         if (isAggressive)
         {
-           // Debug.Log("Aggression Mode Activated: Faster spawns and enemies.");
+            // Debug.Log("Aggression Mode Activated: Faster spawns and enemies.");
             currentMinTime = minTimeBetweenSpawns * 0.5f;
             currentMaxTime = maxTimeBetweenSpawns * 0.5f;
             currentVelocity = aggressiveVelocityOfSpawnedObject;
         }
         else
         {
-           // Debug.Log("Aggression Mode Deactivated: Normal spawns and enemies.");
+            // Debug.Log("Aggression Mode Deactivated: Normal spawns and enemies.");
             currentMinTime = minTimeBetweenSpawns;
             currentMaxTime = maxTimeBetweenSpawns;
             currentVelocity = normalVelocityOfSpawnedObject;
@@ -91,12 +91,12 @@ public class TimedSpawnerRandom : MonoBehaviour
     {
         currentMinTime = minTime;
         currentMaxTime = maxTime;
-       // Debug.Log($"Spawn interval updated: Min={minTime}, Max={maxTime}");
+        // Debug.Log($"Spawn interval updated: Min={minTime}, Max={maxTime}");
     }
 
     public void SetSpawnedObjectVelocity(Vector3 velocity)
     {
         currentVelocity = velocity;
-       // Debug.Log($"Spawned object velocity updated to: {velocity}");
+        // Debug.Log($"Spawned object velocity updated to: {velocity}");
     }
 }
