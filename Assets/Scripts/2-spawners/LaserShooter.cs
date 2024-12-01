@@ -15,6 +15,11 @@ public class LaserShooter : ClickSpawner
     private string currentInput = ""; // Tracks current key sequence
     private float comboTimer;
 
+    [Header("Weapon Key Combinations")]
+    [SerializeField] private string comboForLargeLaser = "az";   // Combo for large laser
+    [SerializeField] private string comboForFastLaser = "ty";   // Combo for fast laser
+    [SerializeField] private string comboForTripleShot = "qwer"; // Combo for triple shot
+
     // State tracking for temporary effects
     private bool isEffectActive = false;
 
@@ -32,7 +37,7 @@ public class LaserShooter : ClickSpawner
         scoreField = GetComponentInChildren<NumberField>();
         if (!scoreField)
         {
-            //Debug.LogError($"No child of {gameObject.name} has a NumberField component!");
+            Debug.LogWarning($"No child of {gameObject.name} has a NumberField component!");
         }
 
         originalVelocity = velocityOfSpawnedObject;
@@ -43,7 +48,7 @@ public class LaserShooter : ClickSpawner
 
         AggressionTracker.OnAggressionModeChanged += HandleAggressionMode;
 
-        // Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
+        Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
     }
 
     private void OnDestroy()
@@ -70,12 +75,8 @@ public class LaserShooter : ClickSpawner
                 if (shotsFired >= maxShotsPerSecond)
                 {
                     shotCooldownTimer = 1f; // Disable spacebar for 1 second
-                    //Debug.Log("Spacebar firing disabled: Cooldown started.");
+                    Debug.Log("Spacebar firing disabled: Cooldown started.");
                 }
-            }
-            else
-            {
-                //Debug.Log("Spacebar firing blocked: On cooldown.");
             }
         }
 
@@ -91,21 +92,21 @@ public class LaserShooter : ClickSpawner
             currentInput += key;
             comboTimer = comboTimeout;
 
-            // Debug.Log($"Combo input detected: {currentInput}");
+            Debug.Log($"Combo input detected: {currentInput}");
 
-            if (currentInput.EndsWith("qwer"))
+            if (currentInput.EndsWith(comboForLargeLaser))
             {
-                ActivateWeapon("qwer");
+                ActivateWeapon(comboForLargeLaser);
                 currentInput = ""; // Reset combo
             }
-            else if (currentInput.EndsWith("ty"))
+            else if (currentInput.EndsWith(comboForFastLaser))
             {
-                ActivateWeapon("ty");
+                ActivateWeapon(comboForFastLaser);
                 currentInput = ""; // Reset combo
             }
-            else if (currentInput.EndsWith("az"))
+            else if (currentInput.EndsWith(comboForTripleShot))
             {
-                ActivateWeapon("az");
+                ActivateWeapon(comboForTripleShot);
                 currentInput = ""; // Reset combo
             }
         }
@@ -116,13 +117,11 @@ public class LaserShooter : ClickSpawner
             comboTimer -= Time.deltaTime;
             if (comboTimer <= 0)
             {
-                //Debug.Log("Combo input reset due to timeout.");
+                Debug.Log("Combo input reset due to timeout.");
                 currentInput = "";
             }
         }
     }
-
-
 
     private void FireLaser()
     {
@@ -135,29 +134,29 @@ public class LaserShooter : ClickSpawner
             tracker.RegisterShot();
         }
 
-        //Debug.Log("Laser fired.");
+        Debug.Log("Laser fired.");
     }
 
     private void ActivateWeapon(string combination)
     {
         if (isEffectActive) return;
 
-        if (combination == "qwer")
+        if (combination == comboForTripleShot)
         {
-            //Debug.Log("Triple shot activated for 'qwer'");
+            Debug.Log("Triple shot activated!");
             StartCoroutine(FireTripleShot());
         }
-        else if (combination == "ty")
+        else if (combination == comboForFastLaser)
         {
-            //Debug.Log("Laser speed increased for 'ty!");
+            Debug.Log("Laser speed increased!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
                 velocityOfSpawnedObject = new Vector3(0, 20f, 0);
             }));
         }
-        else if (combination == "az")
+        else if (combination == comboForLargeLaser)
         {
-            //Debug.Log("Laser size significantly increased for 'az'!");
+            Debug.Log("Laser size increased!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
                 prefabToSpawn.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -205,12 +204,12 @@ public class LaserShooter : ClickSpawner
             if (isAggressive)
             {
                 spawner.SetSpawnInterval(0.3f, 0.5f); // Adjust spawn rate for Aggression Mode
-                //Debug.Log("Aggressive mode activated: Faster enemy spawns.");
+                Debug.Log("Aggressive mode activated: Faster enemy spawns.");
             }
             else
             {
                 spawner.SetSpawnInterval(1.0f, 1.5f); // Reset to normal spawn rate
-                //Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
+                Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
             }
         }
     }

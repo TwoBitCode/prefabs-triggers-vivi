@@ -806,8 +806,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
+      propertyPath: comboForFastLaser
+      value: t
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
       propertyPath: maxShotsPerSecond
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: comboForLargeLaser
+      value: a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
+        type: 3}
+      propertyPath: comboForTripleShot
+      value: q
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
@@ -1405,6 +1420,9 @@ MonoBehaviour:
   aggressiveVelocityOfSpawnedObject: {x: 0, y: 0, z: 0}
   pointsToAdd: 1
   comboTimeout: 2
+  comboForLargeLaser: az
+  comboForFastLaser: ty
+  comboForTripleShot: qwer
   maxShotsPerSecond: 3
   velocityOfSpawnedObject: {x: 0, y: 0, z: 0}
 --- !u!114 &1363711266115913
