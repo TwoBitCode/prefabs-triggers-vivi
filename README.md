@@ -2,9 +2,6 @@
 Play the game on Itch.io: [Prefabs Trigger](https://twobitcode.itch.io/prefabs-trigger)
 
 Welcome to my improved version of the **Space Shooter Game**! 🛸 This README outlines the modifications I made to enhance the gameplay experience and add exciting new mechanics. Let’s dive into the features I implemented! 🌟
-![Screenshot 2024-12-01 143012](https://github.com/user-attachments/assets/82ddb81f-e46e-4356-9465-7f5421f1ca30)
-
-
 
 ---
 
@@ -21,6 +18,22 @@ Welcome to my improved version of the **Space Shooter Game**! 🛸 This README o
      - Combos are configurable through the **Inspector**, making it easy to adjust weapon behaviors without changing the code.
    - This system adds depth and variety to the gameplay. 🎯
 
+   **Key Example Code:**
+   ```csharp
+   if (currentInput.EndsWith(comboForLargeLaser))
+   {
+       ActivateWeapon(comboForLargeLaser);
+   }
+   else if (currentInput.EndsWith(comboForFastLaser))
+   {
+       ActivateWeapon(comboForFastLaser);
+   }
+   else if (currentInput.EndsWith(comboForTripleShot))
+   {
+       ActivateWeapon(comboForTripleShot);
+   }
+   ```
+
 2. **🔥 Aggression Mode**
    - I introduced an **Aggression Mode** to increase the challenge:
      - **When activated**, enemies spawn more frequently, adding intensity.
@@ -29,11 +42,40 @@ Welcome to my improved version of the **Space Shooter Game**! 🛸 This README o
        - Players must adapt their strategies to survive under pressure.
    - This mode adds excitement and pushes players to strategize. 🧠⚡
 
+   **Aggression Mode Code Example:**
+   ```csharp
+   private void TriggerAggression()
+   {
+       SetAggressionMode(true);
+       aggressionTimer = aggressionDuration;
+       shotCount = 0;
+       currentScore = 0;
+   }
+
+   private void SetAggressionMode(bool isAggressive)
+   {
+       OnAggressionModeChanged?.Invoke(isAggressive);
+   }
+   ```
+
 3. **🛑 Restricted Spacebar Shooting**
    - To balance the gameplay and encourage the use of key combos, I implemented **spacebar rate limiting**:
      - The player can only fire **3 shots per second** using the spacebar.
      - Once the limit is reached, the spacebar enters a cooldown for **1 second**.
    - This ensures thoughtful engagement with the combo system rather than relying on rapid spacebar tapping. 🕹️
+
+   **Spacebar Limiting Code Example:**
+   ```csharp
+   if (shotsFired < maxShotsPerSecond && shotCooldownTimer <= 0)
+   {
+       FireLaser();
+       shotsFired++;
+       if (shotsFired >= maxShotsPerSecond)
+       {
+           shotCooldownTimer = 1f;
+       }
+   }
+   ```
 
 ---
 
