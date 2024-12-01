@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameRestart : MonoBehaviour
 {
     public NumberField scoreDisplay; // Reference to the NumberField component
+    public Vector3 playerStartPosition = new Vector3(0, 0, 0); // Default start position for the player
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class GameRestart : MonoBehaviour
         // Reload level-1
         SceneManager.LoadScene("level-1");
 
-        // Reassign the NumberField after the scene loads
+        // Reassign the NumberField and reset player position after the scene loads
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -59,8 +60,25 @@ public class GameRestart : MonoBehaviour
                 Debug.LogWarning("ScoreField still not found after scene reload.");
             }
 
+            ResetPlayerPosition(); // Reset the player's position
+
             // Unsubscribe to avoid repeated calls
             SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+    private void ResetPlayerPosition()
+    {
+        // Find the player object by its name
+        GameObject player = GameObject.Find("PlayerSpaceship1"); // Match the name in the hierarchy
+        if (player != null)
+        {
+            player.transform.position = playerStartPosition;
+            Debug.Log($"Player position reset to: {playerStartPosition}");
+        }
+        else
+        {
+            Debug.LogWarning("Player object not found to reset position.");
         }
     }
 }
