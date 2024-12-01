@@ -32,7 +32,7 @@ public class LaserShooter : ClickSpawner
         scoreField = GetComponentInChildren<NumberField>();
         if (!scoreField)
         {
-            Debug.LogError($"No child of {gameObject.name} has a NumberField component!");
+            //Debug.LogError($"No child of {gameObject.name} has a NumberField component!");
         }
 
         originalVelocity = velocityOfSpawnedObject;
@@ -43,7 +43,7 @@ public class LaserShooter : ClickSpawner
 
         AggressionTracker.OnAggressionModeChanged += HandleAggressionMode;
 
-        Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
+       // Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
     }
 
     private void OnDestroy()
@@ -70,12 +70,12 @@ public class LaserShooter : ClickSpawner
                 if (shotsFired >= maxShotsPerSecond)
                 {
                     shotCooldownTimer = 1f; // Disable spacebar for 1 second
-                    Debug.Log("Spacebar firing disabled: Cooldown started.");
+                    //Debug.Log("Spacebar firing disabled: Cooldown started.");
                 }
             }
             else
             {
-                Debug.Log("Spacebar firing blocked: On cooldown.");
+                //Debug.Log("Spacebar firing blocked: On cooldown.");
             }
         }
 
@@ -91,7 +91,7 @@ public class LaserShooter : ClickSpawner
             currentInput += key;
             comboTimer = comboTimeout;
 
-            Debug.Log($"Combo input detected: {currentInput}");
+           // Debug.Log($"Combo input detected: {currentInput}");
 
             if (currentInput.EndsWith("qwer"))
             {
@@ -116,7 +116,7 @@ public class LaserShooter : ClickSpawner
             comboTimer -= Time.deltaTime;
             if (comboTimer <= 0)
             {
-                Debug.Log("Combo input reset due to timeout.");
+                //Debug.Log("Combo input reset due to timeout.");
                 currentInput = "";
             }
         }
@@ -135,7 +135,7 @@ public class LaserShooter : ClickSpawner
             tracker.RegisterShot();
         }
 
-        Debug.Log("Laser fired.");
+        //Debug.Log("Laser fired.");
     }
 
     private void ActivateWeapon(string combination)
@@ -144,12 +144,12 @@ public class LaserShooter : ClickSpawner
 
         if (combination == "qwer")
         {
-            Debug.Log("Triple shot activated for 'qwer'");
+            //Debug.Log("Triple shot activated for 'qwer'");
             StartCoroutine(FireTripleShot());
         }
         else if (combination == "ty") 
         {
-            Debug.Log("Laser speed increased for 'ty!");
+            //Debug.Log("Laser speed increased for 'ty!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
                 velocityOfSpawnedObject = new Vector3(0, 20f, 0);
@@ -157,7 +157,7 @@ public class LaserShooter : ClickSpawner
         }
         else if (combination == "az")
         {
-            Debug.Log("Laser size significantly increased for 'az'!");
+            //Debug.Log("Laser size significantly increased for 'az'!");
             StartCoroutine(ApplyOneTimeEffect(() =>
             {
                 prefabToSpawn.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -205,12 +205,12 @@ public class LaserShooter : ClickSpawner
             if (isAggressive)
             {
                 spawner.SetSpawnInterval(0.3f, 0.5f); // Adjust spawn rate for Aggression Mode
-                Debug.Log("Aggressive mode activated: Faster enemy spawns.");
+                //Debug.Log("Aggressive mode activated: Faster enemy spawns.");
             }
             else
             {
                 spawner.SetSpawnInterval(1.0f, 1.5f); // Reset to normal spawn rate
-                Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
+                //Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
             }
         }
     }

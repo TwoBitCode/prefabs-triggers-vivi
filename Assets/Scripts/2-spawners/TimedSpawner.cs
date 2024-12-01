@@ -50,7 +50,7 @@ public class TimedSpawner : MonoBehaviour
             // Switch back to normal mode
             currentSpawnInterval = normalSecondsBetweenSpawns;
             currentVelocity = normalVelocityOfSpawnedObject;
-            Debug.Log("Aggressive mode deactivated: Reverted to normal spawn rate and velocity.");
+           // Debug.Log("Aggressive mode deactivated: Reverted to normal spawn rate and velocity.");
         }
     }
 
@@ -58,14 +58,14 @@ public class TimedSpawner : MonoBehaviour
     {
         normalSecondsBetweenSpawns = minInterval;
         aggressiveSecondsBetweenSpawns = maxInterval;
-        Debug.Log($"Spawn intervals updated: Normal={minInterval}s, Aggressive={maxInterval}s");
+        //Debug.Log($"Spawn intervals updated: Normal={minInterval}s, Aggressive={maxInterval}s");
     }
 
     public void SetSpawnedObjectVelocity(Vector3 normalVelocity, Vector3 aggressiveVelocity)
     {
         normalVelocityOfSpawnedObject = normalVelocity;
         aggressiveVelocityOfSpawnedObject = aggressiveVelocity;
-        Debug.Log($"Velocities updated: Normal={normalVelocity}, Aggressive={aggressiveVelocity}");
+        //Debug.Log($"Velocities updated: Normal={normalVelocity}, Aggressive={aggressiveVelocity}");
     }
 
     private async void SpawnRoutine()
@@ -80,7 +80,7 @@ public class TimedSpawner : MonoBehaviour
             if (mover != null)
             {
                 mover.SetVelocity(currentVelocity);
-                Debug.Log($"Spawned {newObject.name} with velocity: {currentVelocity}");
+                //Debug.Log($"Spawned {newObject.name} with velocity: {currentVelocity}");
             }
             else
             {

@@ -60,7 +60,7 @@ public class Mover : MonoBehaviour
         if (transform.position.x > xBoundaries.y || transform.position.x < xBoundaries.x ||
             transform.position.y > yBoundaries.y || transform.position.y < yBoundaries.x)
         {
-            Debug.Log($"{gameObject.name} went out of bounds and was destroyed.");
+            //Debug.Log($"{gameObject.name} went out of bounds and was destroyed.");
             Destroy(gameObject);
         }
     }
