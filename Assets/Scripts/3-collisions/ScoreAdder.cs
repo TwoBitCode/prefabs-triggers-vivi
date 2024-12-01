@@ -3,23 +3,28 @@
 /**
  * This component increases a given "score" field whenever it is triggered.
  */
-public class ScoreAdder : MonoBehaviour {
+public class ScoreAdder : MonoBehaviour
+{
     [Tooltip("Every object tagged with this tag will trigger adding score to the score field.")]
     [SerializeField] string triggeringTag;
     [SerializeField] NumberField scoreField;
     [SerializeField] int pointsToAdd;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == triggeringTag && scoreField!=null) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == triggeringTag && scoreField != null)
+        {
             scoreField.AddNumber(pointsToAdd);
         }
     }
 
-    public ScoreAdder SetScoreField(NumberField newTextField) {
+    public ScoreAdder SetScoreField(NumberField newTextField)
+    {
         this.scoreField = newTextField;
         return this;
     }
-    public ScoreAdder SetPointsToAdd(int newPointsToAdd) {
+    public ScoreAdder SetPointsToAdd(int newPointsToAdd)
+    {
         this.pointsToAdd = newPointsToAdd;
         return this;
     }

@@ -27,7 +27,7 @@ public class Mover : MonoBehaviour
     {
         // Move the object based on its velocity and multiplier
         transform.position += velocity * velocityMultiplier * Time.deltaTime;
-       // Debug.Log($"Moving {gameObject.name} to position {transform.position} with velocity {velocity}");
+        // Debug.Log($"Moving {gameObject.name} to position {transform.position} with velocity {velocity}");
 
         // Optional: Handle boundaries (destroy or wrap)
         if (enableBoundaryCheck)
@@ -52,7 +52,7 @@ public class Mover : MonoBehaviour
     public void SetVelocityMultiplier(float multiplier)
     {
         this.velocityMultiplier = multiplier;
-       // Debug.Log($"{gameObject.name} velocity multiplier set to {multiplier}");
+        // Debug.Log($"{gameObject.name} velocity multiplier set to {multiplier}");
     }
 
     private void CheckBoundsAndDestroy()

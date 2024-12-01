@@ -50,7 +50,7 @@ public class TimedSpawner : MonoBehaviour
             // Switch back to normal mode
             currentSpawnInterval = normalSecondsBetweenSpawns;
             currentVelocity = normalVelocityOfSpawnedObject;
-           // Debug.Log("Aggressive mode deactivated: Reverted to normal spawn rate and velocity.");
+            // Debug.Log("Aggressive mode deactivated: Reverted to normal spawn rate and velocity.");
         }
     }
 

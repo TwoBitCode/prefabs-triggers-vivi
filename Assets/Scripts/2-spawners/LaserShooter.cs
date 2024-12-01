@@ -43,7 +43,7 @@ public class LaserShooter : ClickSpawner
 
         AggressionTracker.OnAggressionModeChanged += HandleAggressionMode;
 
-       // Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
+        // Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
     }
 
     private void OnDestroy()
@@ -91,7 +91,7 @@ public class LaserShooter : ClickSpawner
             currentInput += key;
             comboTimer = comboTimeout;
 
-           // Debug.Log($"Combo input detected: {currentInput}");
+            // Debug.Log($"Combo input detected: {currentInput}");
 
             if (currentInput.EndsWith("qwer"))
             {
@@ -147,7 +147,7 @@ public class LaserShooter : ClickSpawner
             //Debug.Log("Triple shot activated for 'qwer'");
             StartCoroutine(FireTripleShot());
         }
-        else if (combination == "ty") 
+        else if (combination == "ty")
         {
             //Debug.Log("Laser speed increased for 'ty!");
             StartCoroutine(ApplyOneTimeEffect(() =>
