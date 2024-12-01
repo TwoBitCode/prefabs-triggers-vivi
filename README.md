@@ -13,7 +13,7 @@ Welcome to my improved version of the **Space Shooter Game**! 🛸 This README o
      - Special firing modes (e.g., triple-shot).
    - **Key Combination System**:
      - Specific key combos activate each weapon.
-     - Typing `az` fires a larger laser, `xy` fires a faster laser, and `123` triggers a triple-shot.
+     - Typing `az` fires a larger laser, `ty` fires a faster laser, and `qwer` triggers a triple-shot.
      - Combos are configurable through the **Inspector**, making it easy to adjust weapon behaviors without changing the code.
    - This system adds depth and variety to the gameplay. 🎯
 
@@ -49,7 +49,7 @@ My goals were to:
    - Play the game and test the new mechanics.
 
 2. **Key Combination System**:
-   - Type `az`, `xy`, or `123` during gameplay to test the different weapon effects.
+   - Type `az`, `ty`, or `qwer` during gameplay to test the different weapon effects.
    - Observe how lasers change in size, speed, or firing mode.
 
 3. **Aggression Mode**:
