@@ -1,5 +1,6 @@
 ## 🚀 Enhanced Space Shooter Game 🚀
 Play the game on Itch.io: [Prefabs Trigger](https://twobitcode.itch.io/prefabs-trigger)
+
 Welcome to my improved version of the **Space Shooter Game**! 🛸 This README outlines the modifications I made to enhance the gameplay experience and add exciting new mechanics. Let’s dive into the features I implemented! 🌟
 ![Screenshot 2024-12-01 143012](https://github.com/user-attachments/assets/82ddb81f-e46e-4356-9465-7f5421f1ca30)
 
