@@ -46,15 +46,11 @@ public class LaserShooter : ClickSpawner
             originalScale = prefabToSpawn.transform.localScale;
         }
 
-        AggressionTracker.OnAggressionModeChanged += HandleAggressionMode;
-
+        
         Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
     }
 
-    private void OnDestroy()
-    {
-        AggressionTracker.OnAggressionModeChanged -= HandleAggressionMode;
-    }
+
 
     protected override void Update()
     {
@@ -196,23 +192,6 @@ public class LaserShooter : ClickSpawner
         }
     }
 
-    private void HandleAggressionMode(bool isAggressive)
-    {
-        TimedSpawnerRandom spawner = Object.FindAnyObjectByType<TimedSpawnerRandom>();
-        if (spawner != null)
-        {
-            if (isAggressive)
-            {
-                spawner.SetSpawnInterval(0.3f, 0.5f); // Adjust spawn rate for Aggression Mode
-                Debug.Log("Aggressive mode activated: Faster enemy spawns.");
-            }
-            else
-            {
-                spawner.SetSpawnInterval(1.0f, 1.5f); // Reset to normal spawn rate
-                Debug.Log("Aggressive mode deactivated: Normal enemy spawns.");
-            }
-        }
-    }
 
     protected override GameObject spawnObject()
     {

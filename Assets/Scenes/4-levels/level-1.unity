@@ -807,7 +807,7 @@ PrefabInstance:
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
       propertyPath: comboForFastLaser
-      value: t
+      value: ty
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
@@ -817,12 +817,12 @@ PrefabInstance:
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
       propertyPath: comboForLargeLaser
-      value: a
+      value: az
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
       propertyPath: comboForTripleShot
-      value: q
+      value: qwer
       objectReference: {fileID: 0}
     - target: {fileID: 5043964463970077360, guid: 41e5c0266515f1c49aec825f2068a297,
         type: 3}
