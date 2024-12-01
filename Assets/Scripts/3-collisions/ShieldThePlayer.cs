@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShieldThePlayer : MonoBehaviour
 {
-    [Tooltip ("The number of seconds that the shield remains active")]
+    [Tooltip("The number of seconds that the shield remains active")]
     [SerializeField] float duration;
     private void OnTriggerEnter2D(Collider2D other)
     {
