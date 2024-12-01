@@ -45,8 +45,6 @@ public class LaserShooter : ClickSpawner
         {
             originalScale = prefabToSpawn.transform.localScale;
         }
-
-        
         Debug.Log($"LaserShooter initialized with velocity: {velocityOfSpawnedObject}");
     }
 
